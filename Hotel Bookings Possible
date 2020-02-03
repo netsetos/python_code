@@ -1,0 +1,16 @@
+def hotel_booking( arrival,depart, K):
+
+    event = [(t,"RED") for t in arrival] + [(t,"BLUE") for t in depart]
+    event=sorted(event)
+    print(event)
+
+    guest=0
+    for e in event:
+        if(e[1]=='RED'):
+            guest=guest+1
+        else:
+            guest=guest-1
+
+        if(guest>K):
+            return 0
+    return 1
