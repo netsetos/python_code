@@ -1,0 +1,18 @@
+class Node:
+
+    def __init__(self, data):
+        self.data=data
+        self.left=None
+        self.right=None
+
+
+def is_identical(root1,root2):
+    if(root1 == None and root2 == None):
+        return True
+    if(root1 != None and root2 != None and root1.data == root2.data):
+        l = is_identical(root1.left , root2.left)
+        r = is_identical(root1.right, root2.right)
+        if(l and r):
+            return True
+        return False
+    return  False
