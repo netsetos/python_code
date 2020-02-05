@@ -1,0 +1,18 @@
+def level_levels(root):
+    if(root==None):
+        return
+    que=[]
+    que.append(root)
+
+    while(len(que)>0):
+        count=len(que)
+        while (count > 0):
+            temp = que.pop(0)
+            print(temp.data, end=' ')
+            if (temp.left):
+                que.append(temp.left)
+            if (temp.right):
+                que.append(temp.right)
+            count=count-1
+        print("")
+
