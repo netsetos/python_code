@@ -1,0 +1,19 @@
+def flatten(root):
+   if root is not None:
+       flatten(root.left)
+       flatten(root.right)
+       if root.left is not None:
+           current = root.left
+           while current.right is not None:
+               current = current.right
+           current.right = root.right
+           root.right = root.left
+           root.left = None
+
+   return root
+def printPreorder(root):
+    if root is None:
+        return
+    print(root.data)
+    printPreorder(root.left)
+    printPreorder(root.right)
