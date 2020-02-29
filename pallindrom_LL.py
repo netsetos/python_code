@@ -3,7 +3,7 @@ class Node:
         Node.data = data
         Node.next = None
 
-def reverse (head):   #reverse
+def reverse (head):   #reverse the Linked List
     if(head == None):
         return head
     curr = head
@@ -21,11 +21,11 @@ def pallin(head):
     slow = head
     while fast is not None and fast.next is not None :
         fast = fast.next.next
-        if fast is None:  # even
+        if fast is None:  # for even numbers
             mid = slow.next
             break
 
-        if fast.next is None:   #odd
+        if fast.next is None:   # for odd numbers
             mid=slow.next.next
             break
         slow = slow.next
@@ -34,7 +34,7 @@ def pallin(head):
     mid=reverse(mid)
     return head,mid
 
-def compare(head,mid_reverse):
+def compare(head,mid_reverse):                             #for comparing two Linked List
     while head is not None or mid_reverse is not None:
         if head.data != mid_reverse.data:
             return -1
