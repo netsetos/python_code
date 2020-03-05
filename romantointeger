@@ -1,0 +1,36 @@
+def romantointeger(A):
+    result=0
+    i=0
+    while(i<len(A)):
+        curr=value(A[i])
+        if(i+1<len(A)):
+            next=value(A[i+1])
+            if(curr>=next):
+                result=result+curr
+                i=i+1
+            else:
+                result=result+(next-curr)
+                i=i+2
+        else:
+            result=result+curr
+            i=i+1
+    return result
+
+
+
+def value(A):
+    if(A=='I'):
+        return 1
+    if(A=='V'):
+        return 5
+    if(A=='X'):
+        return 10
+    if(A=='L'):
+        return 50
+    if(A=='C'):
+        return 100
+    if(A=='D'):
+        return 500
+    if(A=='M'):
+        return 1000
+
