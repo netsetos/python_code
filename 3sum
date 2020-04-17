@@ -1,0 +1,27 @@
+def threeSum(arr, target):
+    arr.sort()
+    size=len(arr)
+    max=float('inf')
+    res=0
+    i=0
+    while i<size:
+        start = i + 1
+        end= size -1
+        while start < end:
+            sum = arr[i] + arr[start] + arr[end]
+            diff = abs(sum - target)
+            if diff == 0:
+                return sum
+            if diff < max:
+                max = diff
+                res = sum
+            if sum <= target:
+                start += 1
+            else:
+                end -= 1
+        i=i+1
+    return res
+
+arr= [7,12,3,1,2,-6,5,-8,6]
+target = 0
+print(threeSum(arr,target))
