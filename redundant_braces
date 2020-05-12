@@ -1,0 +1,19 @@
+def redundant_braces(N):
+    st=[]
+    for i in range(len(N)):
+        if(N[i] in '(+-*/'):
+            st.append(N[i])
+        elif(N[i]==')'):
+            if st.pop()=='(':
+                return 1
+            st.pop()
+    return 0
+
+N="((a+b)*c)"
+a=redundant_braces(N)
+if(a==1):
+    print("Redundant")
+else:
+    print("Not a Redundant")
+
+
