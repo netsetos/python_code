@@ -1,0 +1,9 @@
+def max_Profit(A):
+    profit=0
+    for i in range(len(A)-1):
+        if(A[i]<A[i+1]):
+            profit+=A[i+1]-A[i]
+    return profit
+
+A=[1,4,5,2,6]
+print(max_Profit(A))
