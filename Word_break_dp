@@ -1,0 +1,42 @@
+def wordBreak(dict, str, out=""):                                       # Recursion
+	if len(str)==0:
+		print(out)
+		return
+
+	for i in range(1, len(str) + 1):
+		prefix = str[:i]
+
+		if prefix in dict:
+			wordBreak(dict, str[i:], out + " " + prefix)
+
+def word_break_alternate(dict, str):                                   # Alternate way of Recursion but to avoid repetition
+  return True
+
+	for i in range(1, len(str) + 1):
+		prefix = str[:i]
+		if prefix in dict and wordBreak(dict, str[i:]):
+			return True
+	return False
+
+
+def wordbreak_dp(word,dict):                                           # Dynamic programming
+    m =len(word)
+    T = [[False for x in range (m)] for y in range (m)]
+
+    for l in range(1,m+1):
+        for i in range(0,m-l+1):
+            j = i + l-1
+            str = word[i:j+1]
+            if str in dict:
+                T[i][j] = True
+                continue
+
+            for k in range(i+1,j+1):
+                if (T[i][k - 1] != False and T[k][j] != False):
+                    T[i][j] = True
+                    break
+
+    if T[0][m-1] == False:
+        return False
+    else:
+        return True
