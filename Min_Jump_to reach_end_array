@@ -1,0 +1,34 @@
+#Recursive Approach
+
+def minJumps(arr, start, end):
+    if (start == end):
+        return 0
+    if (arr[start] == 0):
+        return float('inf')
+
+
+    min = float('inf')
+    for i in range(start + 1, end + 1):
+        if i <= start + arr[start]:
+            jumps = minJumps(arr, i, end)
+            if (jumps + 1 < min):
+                min = jumps + 1
+    return min
+    
+    
+  #Dynamic Approach
+  
+  def minJumpsDP(arr):
+    if arr[0] == 0:
+        return float('inf')
+
+    end = len(arr)
+
+    dp = [0 for i in range(end)]
+
+    for i in range(1, end):
+        dp[i] = float('inf')
+        for j in range(0, i):
+                if i <= j + arr[j]:
+                    dp[i] = min(dp[i], dp[j] + 1)
+    return dp[-1]
