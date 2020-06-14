@@ -1,0 +1,18 @@
+def subset_sum(arr,sum,res):
+    if sum==0:
+        return True
+    if sum<0:
+        return False
+    if len(arr)==0 and sum!=0:
+        return False
+    arr.pop(0)
+    if len(arr)>0:
+        res.append(arr[0])
+        select= subset_sum(arr,sum-arr[0],res)
+        reject= subset_sum(arr,sum,res)
+        return select or reject
+
+arr = [3,4,5,2]
+sum = 14
+res=[]
+print(subset_sum(arr,sum,res))
