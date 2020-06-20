@@ -1,0 +1,17 @@
+def majority_ele(A):
+    curr_majority=A[0]
+    count=1
+    size=len(A)
+    for index in range(1,size):
+        if curr_majority == A[index]:
+            count=count+1
+        else:
+            count=count-1
+        if count == 0:
+            curr_majority = A[index]
+            count=1
+    for i in range(size):
+        if curr_majority == A[i]:
+            count=count+1
+        if count>size/2:
+            return curr_majority
