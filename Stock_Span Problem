@@ -1,0 +1,20 @@
+def calculateSpan(price, S):
+    n = len(price)
+    st = []
+    st.append(0)
+    S[0] = 1
+
+    for i in range(1, n):
+        while (len(st) > 0 and price[st[-1]] <= price[i]):
+            st.pop()
+        if len(st) <= 0:
+            S[i] = i + 1
+        else:
+            S[i] = (i - st[-1])
+        st.append(i)
+    return S
+
+
+price = [60,70,80,100,90,75,80,120]
+S = [0 for i in range(len(price))]
+print(calculateSpan(price, S))
