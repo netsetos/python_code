@@ -1,0 +1,49 @@
+RECURSION
+
+
+def numDecodings(A,index):
+                                                  #when character is empty string
+    if index==len(A):
+        return 1
+                                                  #when only character is 0
+    if A[index] == "0":
+        return 0
+                                                  #when single character
+    if index == len(A)-1:
+        return 1
+    way1=numDecodings(A,index+1)
+    way2=0
+    if int(A[index:index+2]) <=26:
+        way2=numDecodings(A,index+2)
+    return way1+way2
+
+
+
+
+
+MEMOIZATION
+
+A="1112"
+arr= [0 for i in range(len(A)+1)]
+def numDecodings_memo(A,index,arr):
+                                                  #when character is empty string
+    if index==len(A):
+        return 1
+                                                   #when only character is 0
+    if A[index] == "0":
+        return 0
+                                                    #when single character
+    if index == len(A)-1:
+        return 1
+    if arr[index]>0:
+        return arr[index]
+    way1=numDecodings_memo(A,index+1,arr)
+    way2=0
+    if int(A[index:index+2]) <=26:
+        way2=numDecodings_memo(A,index+2,arr)
+    arr[index]= way1+way2
+    return arr[index]
+
+
+print(numDecodings_memo(A,0,arr))
+
