@@ -1,0 +1,22 @@
+def numDecodings(A):
+    if len(A) == 0:
+        return 0
+    if int(A[0]) == 0:
+        return 0
+    n = len(A)
+    result = [0 for _ in range(0, n + 1)]
+    result[0] = result[1] = 1
+    for i in range(1, n):
+        v1 = int(A[i:i + 1])
+        v2 = int(A[i - 1:i + 1])
+        if 0 < v1 <= 9:
+            result[i + 1] = result[i]
+        if 10 <= v2 <= 26:
+                result[i + 1] = result[i + 1] + result[i - 1]
+        if result[i + 1] == 0:
+            return 0
+
+    answer = result[n]
+    return answer
+
+print(numDecodings("1204"))
