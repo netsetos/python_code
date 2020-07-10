@@ -1,0 +1,38 @@
+#DYNAMIC APPROACH
+#Find Out nthUgly Number
+
+def nthUglyNumber(n):
+    res = [1]
+    i2, i3, i5 = 0, 0, 0
+    for i in range(n - 1):
+        next2 = res[i2] * 2
+        next3 = res[i3] * 3
+        next5 = res[i5] * 5
+        next = min(next2, next3, next5)
+        res.append(next)
+        if next == next2:
+            i2 += 1
+        if next == next3:
+            i3 += 1
+        if next == next5:
+            i5 += 1
+    return res[-1]
+
+print(nthUglyNumber(9))
+
+
+#Check whether number is ugly or not
+
+def isugly(num):
+    if num==0:
+        return False
+    factor=[2,3,5]
+    for f in factor:
+        while (num%f==0):
+            num=num/f
+    if num==1:
+        return True
+    else:
+        return False
+
+# print(isugly(14))
