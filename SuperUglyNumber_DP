@@ -1,0 +1,19 @@
+def nthSuperUglyNumber(n, primes):
+    res = [1]
+    idexs = [0] * len(primes)  # first is the current idex
+    for i in range(n - 1):
+        next = 10000
+        min_j = []
+        for j, idex in enumerate(idexs): #3
+            nextj = res[idex] * primes[j]
+            if nextj < next:
+                next = nextj
+                min_j = [j]
+            elif nextj == next:
+                min_j.append(j)  # we can get mutiple j if there is a tie
+        res.append(next)
+        for j in min_j:
+            idexs[j] += 1
+    return res[-1]
+
+print(nthSuperUglyNumber(9, [2,3,5]))
