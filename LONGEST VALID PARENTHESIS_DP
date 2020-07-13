@@ -1,0 +1,20 @@
+def longestValidParentheses(A):
+    dp = [0 for x in A]
+    for i in range(len(A)):
+        if A[i] == '(':
+            pass
+        if A[i] == ')':
+            if i-1<0:
+                continue
+            if A[i-1] == '(':
+                dp[i]=dp[i-2]+2
+                continue
+            if i-dp[i-1]-1<0:
+                continue
+            if A[i-dp[i-1]-1] =='(':
+                dp[i] = dp[i-1]+2 + dp[i-dp[i-1]-2]
+    if len(dp)==0:
+        return 0
+    return max(dp)
+
+print(longestValidParentheses("(())()"))
