@@ -1,0 +1,8 @@
+def count_setbits(n):
+    m=[0 for x in range(n+1)]
+    m[0]=0
+    for i in range(1,n+1):
+        m[i]=m[int(i/2)]+i%2
+    return m
+
+print(count_setbits(5))
