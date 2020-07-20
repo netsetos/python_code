@@ -1,0 +1,16 @@
+def factorial(num):
+    fact=1
+    if num==0 or num==1:
+        return num
+    else:
+        fact=num*factorial(num-1)
+        return fact
+
+def trailing_zeros(num):
+    oc=5
+    count=0
+    while(num/oc>=1):
+        count+=num//oc
+        oc=oc*5
+    return count
+
