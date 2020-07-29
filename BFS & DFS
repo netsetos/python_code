@@ -1,0 +1,30 @@
+#Breadth First Search [BFS]
+
+queue = []     #Initialize a queue
+visited=[]
+def bfs(graph, node):
+  queue.append(node)
+  visited.append(node)
+  while queue:
+    curr = queue.pop(0)
+    print (curr, end = " ")
+
+    for neighbour in graph[curr]:
+      if neighbour not in visited:
+        queue.append(neighbour)
+        visited.append(neighbour)
+
+
+
+
+
+#Depth First Search [DFS]
+
+visited = [] # Set to keep track of visited nodes.
+
+def dfs(graph, node):
+    if node not in visited:
+        print (node)
+        visited.append(node)
+        for neighbour in graph[node]:
+            dfs(graph, neighbour)
