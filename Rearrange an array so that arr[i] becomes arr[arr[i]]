@@ -1,0 +1,12 @@
+def rearrange(arr,n):
+    for i in range(n):
+        arr[i]=arr[i]+(arr[arr[i]]%n)*n
+    for i in range(n):
+        arr[i]=int(arr[i]/n)
+        print(arr[i],end=" ")
+    print("")
+
+
+a=[4,0,2,1,3]
+n=len(a)
+rearrange(a,n)
