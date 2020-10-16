@@ -1,0 +1,40 @@
+# check if given set of moves is circular on not
+def checkCircularMove(str1):
+    x = 0
+    y = 0
+    N=0
+    E=1
+    S=2
+    W=3
+    dir1 =N
+
+    for move in str1:
+        if move == 'R':
+            dir1 = int((dir1 + 1) % 4)
+        if move == 'L':
+            dir1 = int((4 + dir1 - 1) % 4)
+
+
+        if move == 'M':
+            if dir1 == N:
+                y = y + 1
+            if dir1 == S:
+                y = y - 1
+            if dir1 == E:
+                x = x + 1
+            if dir1 == W:
+                x = x - 1
+    if x == 0 and y == 0:
+        return True
+    else:
+        return False
+
+
+if __name__ == '__main__':
+    # str = "MMRMMRMMRMMR"
+    str = "ML"
+
+    if checkCircularMove(str):
+        print("Sequence of moves are circular")
+    else:
+        print("Sequence of moves are not circular")
