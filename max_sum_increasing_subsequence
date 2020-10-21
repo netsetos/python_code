@@ -1,0 +1,26 @@
+def maxSumsub(arr, n):
+    max = 0
+    sum = [0 for x in range(n)]
+
+    # Initialize sum values for all indexes
+    for i in range(n):
+        sum[i] = arr[i]
+
+        # Compute maximum sum
+    for i in range(1, n):
+        for j in range(i):
+            if (arr[i] > arr[j] and
+                    sum[i] < sum[j] + arr[i]):
+                sum[i] = sum[j] + arr[i]
+
+    # Pick maximum out of sum
+    for i in range(n):
+        if max < sum[i]:
+            max = sum[i]
+    return max
+
+
+# Driver Code
+arr = [21, 4, 2, 16, 17, 3, 13, 14]
+n = len(arr)
+print("Sum of maximum sum increasing subsequence is " + str(maxSumsub(arr, n)))
