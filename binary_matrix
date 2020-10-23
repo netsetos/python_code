@@ -1,0 +1,33 @@
+def binary_matrix(A):
+    row, col = len(A), len(A[0])
+    dp = [[0 for j in range(col)] for i in range(row)]
+    for i in range(row):
+        dp[i][0] = A[i][0]
+    for j in range(col):
+        dp[0][j] = A[0][j]
+    for i in range(1, row):
+        for j in range(1, col):
+            if A[i][j] == 0:
+                dp[i][j] = 0
+            else:
+                dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])
+    max_ele = dp[0][0]
+    max_i, max_j = 0, 0
+    for i in range(row):
+        for j in range(col):
+            if max_ele < dp[i][j]:
+                max_ele = dp[i][j]
+                max_i, max_j = i, j
+
+    k = max_ele
+    return k
+
+
+M = [[0, 1, 1, 0, 1],
+     [1, 1, 0, 1, 0],
+     [0, 1, 1, 1, 0],
+     [1, 1, 1, 1, 0],
+     [1, 1, 1, 1, 1],
+     [0, 0, 0, 0, 0]]
+
+print(binary_matrix(M))
