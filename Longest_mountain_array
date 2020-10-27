@@ -1,0 +1,25 @@
+def longestmountain(A):
+    peaks = {}
+    for i in range(1,len(A)-1):
+        if A[i] > A[i-1] and A[i] > A[i+1]:
+            peaks[i] = A[i]
+
+    left = 0
+    right = 0
+    val = 0
+
+    for i, j in peaks.items():
+        left = i-1
+        while left > 0 and A[left -1] < A[left]:
+            left = left - 1
+
+        right = i+1
+        while right < len(A)-1 and A[right] > A[right+1]:
+            right = right + 1
+
+        val = max(val, right-left+1)
+    return val
+
+B=[10,15,16,9,4,3,11,1]
+print(longestmountain(B))
+
