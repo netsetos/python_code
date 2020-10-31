@@ -1,0 +1,32 @@
+def partition(arr,size):
+    sum=0
+    for i in range(size):
+        sum=sum+arr[i]
+    if sum%2!=0:
+        return False
+
+
+    subset=[[False for i in range(sum//2 + 1)]
+            for i in range(size + 1)]
+
+    for i in range(size+1):
+        subset[i][0]=True
+    for j in range(sum//2 + 1):
+        subset[0][j]=False
+
+    for i in range(1,size+1):
+        for j in range(1,sum//2+1):
+            if j < set[i-1]:
+                subset[i][j]=subset[i-1][j]
+
+            if j >= set[i-1]:
+                subset[i][j]= (subset[i-1][j] or subset[i-1][j-set[i-1]])
+    return subset[size][sum//2]
+
+set = [2, 2, 4, 5]
+sum = 20
+size = len(set)
+if partition(set, size) == True:
+    print("True")
+else:
+    print("False")
