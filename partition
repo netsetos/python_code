@@ -20,13 +20,5 @@ def partition(arr,size):
                 subset[i][j]=subset[i-1][j]
 
             if j >= set[i-1]:
-                subset[i][j]= (subset[i-1][j] or subset[i-1][j-set[i-1]])
+                subset[i][j]= (subset[i-1][j] or subset[i-1][j-arr[i-1]])
     return subset[size][sum//2]
-
-set = [2, 2, 4, 5]
-sum = 20
-size = len(set)
-if partition(set, size) == True:
-    print("True")
-else:
-    print("False")
