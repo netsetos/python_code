@@ -1,0 +1,21 @@
+def longestPalindromeSubseq(s):
+    size = len(s)
+    L = [[0 for x in range(size)] for x in range(size)]
+
+    for i in range(size):
+        L[i][i] = 1
+
+    for length in range(2, size + 1):
+        for i in range(size - length + 1):
+            j = i + length - 1
+            if s[i] == s[j] and length == 2:
+                L[i][j] = 2
+            elif s[i] == s[j]:
+                L[i][j] = 2 + L[i + 1][j - 1]
+            else:
+                L[i][j] = max(L[i][j - 1], L[i + 1][j])
+
+    return L[0][size - 1]
+
+str="babbb"
+print(longestPalindromeSubseq(str))
