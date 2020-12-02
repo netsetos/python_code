@@ -1,0 +1,19 @@
+def petrol_circular(petrol,dist,n):
+    sum = 0
+    starting = 0
+    diff = 0
+    for i in range(n):
+        sum = sum+petrol[i]-dist[i]
+        if sum<0:
+            starting =i+1
+            diff = diff+sum
+            sum = 0
+    if sum+diff > 0:
+        return starting
+    else:
+        return -1
+
+p = [7,1,0,11,4]
+d = [5,9,1,2,5]
+circular=petrol_circular(p, d,5)
+print(circular)
