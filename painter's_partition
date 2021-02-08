@@ -1,0 +1,19 @@
+def paint(self, A, B, C):
+        start=max(C)
+        end=sum(C)
+        
+        while(start<=end):
+            mid=(start+end)//2
+            painter=1
+            board=0
+            for brush in C:
+                if (board+brush)>mid:
+                    painter=painter+1
+                    board=brush
+                else:
+                    board=board+brush
+            if painter<=A:
+                end=mid-1
+            else:
+                start=mid+1
+        return (start*B)% 10000003
